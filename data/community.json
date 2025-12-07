@@ -1,0 +1,50 @@
+[
+  {
+    "id": "dubai_plan_001",
+    "destination": "Dubai",
+    "title": "7-Day Luxury Dubai Experience",
+    "creator": "Travelume Community",
+    "likes": 245,
+    "saves": 120,
+    "budget_range": "\u20b960,000 - \u20b91,25,000",
+    "duration": "7 days",
+    "image_url": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c",
+    "popularity": 95
+  },
+  {
+    "id": "thailand_plan_002",
+    "destination": "Thailand",
+    "title": "10-Day Thailand Adventure",
+    "creator": "Travelume Community",
+    "likes": 189,
+    "saves": 95,
+    "budget_range": "\u20b970,000 - \u20b91,21,000",
+    "duration": "10 days",
+    "image_url": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a",
+    "popularity": 88
+  },
+  {
+    "id": "bali_plan_003",
+    "destination": "Bali",
+    "title": "8-Day Bali Tropical Escape",
+    "creator": "Travelume Community",
+    "likes": 312,
+    "saves": 156,
+    "budget_range": "\u20b945,000 - \u20b980,000",
+    "duration": "8 days",
+    "image_url": "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1",
+    "popularity": 92
+  },
+  {
+    "id": "paris_plan_004",
+    "destination": "Paris",
+    "title": "6-Day Romantic Paris Getaway",
+    "creator": "Travelume Community",
+    "likes": 278,
+    "saves": 134,
+    "budget_range": "\u20b960,000 - \u20b990,000",
+    "duration": "6 days",
+    "image_url": "https://images.unsplash.com/photo-1502602898536-47ad22581b52",
+    "popularity": 90
+  }
+]
