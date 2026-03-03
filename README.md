@@ -8,7 +8,6 @@
 
 - 🤖 **AI Trip Planner** — Generate personalized itineraries powered by Google Gemini
 - 📓 **Travel Journals** — Create, edit, and export travel journals with images and PDFs
-- 🏨 **Bookings** — Hotel, flight, bus, train, car rental, and villa booking modules
 - 💬 **Travel Coach Chatbot** — Real-time AI travel assistant with text-to-speech support
 - 🔐 **Authentication** — Secure JWT-based user registration and login
 - 🗺️ **Popular Destinations** — Curated destination cards with premium itinerary modals
