@@ -126,33 +126,23 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 ### 3. Set Up the Backend
 
 ```bash
-# Create and activate a virtual environment
-python -m venv .venv
-.venv\Scripts\activate        # Windows
-# source .venv/bin/activate   # macOS/Linux
-
-# Install dependencies
+# Install dependencies (if not already done)
 pip install -r backend/requirements.txt
 
-# Start the backend server
-uvicorn backend.main:app --reload --port 8000
+# Start the backend server from the project root
+npm run dev:api
 ```
 
-Backend runs at: `http://localhost:8000`  
-API docs available at: `http://localhost:8000/docs`
+Backend runs at: `http://localhost:8001`  
+API docs available at: `http://localhost:8001/docs`
 
 ---
 
 ### 4. Set Up the Frontend
 
 ```bash
-cd frontend
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
+# Start the frontend from the project root (in a new terminal)
+npm run dev:frontend
 ```
 
 Frontend runs at: `http://localhost:5173`
