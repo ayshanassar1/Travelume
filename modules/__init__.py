@@ -71,4 +71,4 @@ def check_dependencies():
     return True
 
 # Initialize on import
-print(f"✅ Travelume Modules v{__version__} loaded successfully!")
+print(f"[OK] Travelume Modules v{__version__} loaded successfully!")

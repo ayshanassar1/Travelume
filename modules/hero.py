@@ -20,7 +20,7 @@ def render_hero():
         margin-bottom: 40px;
     }
     
-    .hero-content {
+    .hero-content{
         max-width: 800px;
     }
     

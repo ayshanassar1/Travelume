@@ -18,35 +18,78 @@ except ImportError as e:
     DATABASE_AVAILABLE = False
     st.warning(f"⚠️ Database module not available: {e}. Trips will be saved locally only.")
 
-# ==================== FIX FOR WHITE TEXT ====================
+# ==================== FIX FOR DROPDOWNS & CALENDAR ====================
 st.markdown("""
 <style>
-    /* NUCLEAR FIX: MAKE EVERYTHING BLACK ON WHITE */
+    /* 1. Make dropdown/selectbox OPTIONS WHITE on dark background */
+    div[data-baseweb="select"] div,
+    div[data-baseweb="select"] option,
+    div[data-baseweb="select"] span {
+        color: white !important;
+        background-color: #1a237e !important;
+    }
     
-    /* 1. Force ALL text to be BLACK */
-    * {
+    /* 2. Make dropdown LIST visible (when clicked) */
+    div[data-baseweb="popover"] {
+        background-color: #1a237e !important;
+        color: white !important;
+    }
+    
+    div[data-baseweb="popover"] div,
+    div[data-baseweb="popover"] li,
+    div[data-baseweb="popover"] span {
+        color: white !important;
+        background-color: #1a237e !important;
+    }
+    
+    /* 3. Make calendar dates visible */
+    .stDateInput [data-baseweb="input"] {
+        color: white !important;
+    }
+    
+    .rdrMonth,
+    .rdrCalendarWrapper,
+    .rdrDateDisplayWrapper,
+    .rdrMonthAndYearWrapper {
+        background-color: #1a237e !important;
+        color: white !important;
+    }
+    
+    .rdrDay,
+    .rdrWeekDay,
+    .rdrDayNumber span {
+        color: white !important;
+    }
+    
+    .rdrDay:hover .rdrDayNumber span {
+        color: #1a237e !important;
+        background-color: white !important;
+    }
+    
+    /* 4. Make multiselect options visible */
+    div[data-baseweb="select"] [role="listbox"] div {
+        color: white !important;
+        background-color: #1a237e !important;
+    }
+    
+    /* 5. Make ALL other text black (but keep dropdowns white) */
+    *:not(div[data-baseweb="select"] *):not(div[data-baseweb="popover"] *):not(.rdrCalendarWrapper *):not(div[data-baseweb="select"] [role="listbox"] *) {
         color: #000000 !important;
     }
     
-    /* 2. Force ALL backgrounds WHITE */
+    /* 6. Force ALL backgrounds WHITE */
     body, .stApp, main, [data-testid="stAppViewContainer"] {
         background-color: white !important;
     }
     
-    /* 3. Force ALL Streamlit text BLACK */
-    h1, h2, h3, h4, h5, h6, p, span, div, label {
-        color: #000000 !important;
-    }
-    
-    /* 4. Force input fields to have BLACK text */
-    .stTextInput input, .stTextArea textarea, .stSelectbox select,
-    .stDateInput input, .stNumberInput input, .stMultiSelect input {
+    /* 7. Force input fields to have BLACK text */
+    .stTextInput input, .stTextArea textarea {
         color: #000000 !important;
         background-color: white !important;
         border: 1px solid #cccccc !important;
     }
     
-    /* 5. Make labels DARK BLUE and BOLD */
+    /* 8. Make labels DARK BLUE and BOLD */
     .stTextInput label, .stTextArea label, .stSelectbox label,
     .stSlider label, .stDateInput label, .stCheckbox label,
     .stRadio label, .stNumberInput label, .stMultiSelect label {
@@ -55,24 +98,19 @@ st.markdown("""
         font-size: 16px !important;
     }
     
-    /* 6. Make containers white with borders */
-    .stContainer, .element-container, .block-container {
-        background-color: white !important;
-    }
-    
-    /* 7. Force buttons to work normally */
+    /* 9. Force buttons to work normally */
     .stButton button {
         color: white !important;
         background-color: #1a237e !important;
         cursor: pointer !important;
     }
     
-    /* 8. Custom progress bar */
+    /* 10. Custom progress bar */
     .stProgress > div > div > div > div {
         background-color: #1a237e !important;
     }
     
-    /* 9. Simple card styling */
+    /* 11. Simple card styling */
     .custom-card {
         background-color: white !important;
         border: 2px solid #1a237e !important;
@@ -82,51 +120,7 @@ st.markdown("""
         box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
     }
     
-    /* 10. Force enable ALL buttons */
-    button {
-        pointer-events: auto !important;
-        opacity: 1 !important;
-        cursor: pointer !important;
-    }
-    
-    /* 11. Remove disabled button styling */
-    button[disabled] {
-        opacity: 1 !important;
-        background-color: #1a237e !important;
-    }
-    
-    /* FIX FOR ALL ITINERARY TEXT - Make ALL AI response text BLACK */
-    .stMarkdown p, .stMarkdown div, .stMarkdown span, .stMarkdown li, 
-    .stMarkdown strong, .stMarkdown em, .stMarkdown h1, .stMarkdown h2, 
-    .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6,
-    .stMarkdown code, .stMarkdown pre {
-        color: #000000 !important;
-    }
-    
-    /* Target ALL tab content where itinerary is displayed */
-    [data-testid="stTabContent"] p, 
-    [data-testid="stTabContent"] div, 
-    [data-testid="stTabContent"] span,
-    [data-testid="stTabContent"] li,
-    [data-testid="stTabContent"] strong,
-    [data-testid="stTabContent"] em,
-    [data-testid="stTabContent"] h3,
-    [data-testid="stTabContent"] code,
-    [data-testid="stTabContent"] pre {
-        color: #000000 !important;
-    }
-    
-    /* Force bullet points and list items black */
-    .stMarkdown ul, .stMarkdown ol, .stMarkdown li {
-        color: #000000 !important;
-    }
-    
-    /* Make the daily plan tab text black */
-    .stTabs [data-baseweb="tab-panel"] * {
-        color: #000000 !important;
-    }
-    
-    /* Database status badge */
+    /* 12. Database status badge */
     .db-status {
         display: inline-block;
         padding: 4px 8px;
@@ -142,6 +136,24 @@ st.markdown("""
     .db-disconnected {
         background-color: #f8d7da;
         color: #721c24;
+    }
+    
+    /* 13. Fix for expander content */
+    .stExpander .streamlit-expanderContent {
+        color: #000000 !important;
+    }
+    
+    /* 14. Make question text more readable */
+    .question-text {
+        color: #000000 !important;
+        font-weight: bold !important;
+        font-size: 16px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    /* 15. Make dropdown selected value visible */
+    div[data-baseweb="select"] [data-baseweb="typo"] {
+        color: white !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -224,41 +236,46 @@ def render_ai_planner():
         
         with col1:
             st.markdown(
-                "<p style='color:black; font-size:16px; font-weight:500; margin:0;'>1. Where are you starting your trip from?</p>",
+                "<p class='question-text'>1. Where are you starting your trip from?</p>",
                 unsafe_allow_html=True)
             departure_city = st.text_input(
-                "",placeholder="e.g., Mumbai, Delhi, Bangalore",
+                "", placeholder="e.g., Mumbai, Delhi, Bangalore",
                 help="Your starting city or airport",
-                key="departure_city")
+                key="departure_city",
+                label_visibility="collapsed")
         
         with col2:
             st.markdown(
-                "<p style='color:black; font-size:16px; font-weight:500; margin:0;'>2. Search for your destination country/city</p>",
+                "<p class='question-text'>2. Search for your destination country/city</p>",
                 unsafe_allow_html=True)
-    
             destination = st.text_input(
-                "",placeholder="e.g., Dubai, Bali, Paris",
+                "", placeholder="e.g., Dubai, Bali, Paris",
                 help="Where do you want to go?",
-                key="destination")
+                key="destination",
+                label_visibility="collapsed")
         
         col3, col4 = st.columns(2)
         with col3:
             st.markdown(
-                "<p style='color:black; font-size:16px; font-weight:500; margin:0;'>3. Select Start Date</p>",
+                "<p class='question-text'>3. Select Start Date</p>",
                 unsafe_allow_html=True)
             start_date = st.date_input(
-                "",min_value=datetime.today(),
+                "", 
+                min_value=datetime.today(),
                 value=datetime.today() + timedelta(days=30),
-                key="start_date")
+                key="start_date",
+                label_visibility="collapsed")
 
         with col4:
             st.markdown(
-                "<p style='color:black; font-size:16px; font-weight:500; margin:0;'>4. Select End Date</p>",
+                "<p class='question-text'>4. Select End Date</p>",
                 unsafe_allow_html=True)
             end_date = st.date_input(
-                "",min_value=datetime.today() + timedelta(days=1),
+                "", 
+                min_value=datetime.today() + timedelta(days=1),
                 value=datetime.today() + timedelta(days=37),
-                key="end_date")
+                key="end_date",
+                label_visibility="collapsed")
         
         # Calculate days
         if start_date and end_date:
@@ -272,13 +289,11 @@ def render_ai_planner():
     
     # ==================== STEP 2: TRAVEL PREFERENCES ====================
     with st.container(border=True):
-        st.markdown("<h4 style='color:black;'>🎯 <b>Step 2: Travel Preferences</b></h4>",unsafe_allow_html=True)
-
+        st.markdown("<h4 style='color:black;'>🎯 <b>Step 2: Travel Preferences</b></h4>", unsafe_allow_html=True)
         
         st.markdown(
-    "<p style='color:black; font-size:16px; font-weight:500; margin:0;'>5. Which of these travel themes best describes your dream getaway?</p>",
-    unsafe_allow_html=True)
-
+            "<p class='question-text'>5. Which of these travel themes best describes your dream getaway?</p>",
+            unsafe_allow_html=True)
         travel_theme = st.selectbox(
             "",
             [
@@ -294,91 +309,93 @@ def render_ai_planner():
                 "Wellness & Spa 🧘‍♀️"
             ],
             index=0,
-            key="travel_theme")
+            key="travel_theme",
+            label_visibility="collapsed")
         
         st.markdown(
-    "<p style='color:black; font-size:16px; font-weight:500; margin:0;'>6. What pace of travel do you prefer?</p>",
-    unsafe_allow_html=True)
-
+            "<p class='question-text'>6. What pace of travel do you prefer?</p>",
+            unsafe_allow_html=True)
         travel_pace = st.selectbox(
             "",
-                [
-                    "Relaxed (Plenty of downtime)",
-                    "Moderate (Mix of activities and rest)",
-                    "Fast-paced (See as much as possible)",
-                    "Flexible (Go with the flow)"
-                ],
-                index=1,
-                key="travel_pace")
-
-
+            [
+                "Relaxed (Plenty of downtime)",
+                "Moderate (Mix of activities and rest)",
+                "Fast-paced (See as much as possible)",
+                "Flexible (Go with the flow)"
+            ],
+            index=1,
+            key="travel_pace",
+            label_visibility="collapsed")
         
         st.markdown(
-    "<p style='color:black; font-size:16px; font-weight:500; margin:0;'>7. What kind of weather do you prefer for your trip?</p>",
-    unsafe_allow_html=True)
-
+            "<p class='question-text'>7. What kind of weather do you prefer for your trip?</p>",
+            unsafe_allow_html=True)
         weather_preference = st.selectbox(
             "",
-                [
-                    "Warm & Sunny ☀️",
-                    "Cool & Pleasant 🌤️",
-                    "Cold & Snowy ❄️",
-                    "Any weather is fine 🌈",
-                    "Avoid rainy season ☔"
-                ],
-                index=0,
-                key="weather_preference")
-
+            [
+                "Warm & Sunny ☀️",
+                "Cool & Pleasant 🌤️",
+                "Cold & Snowy ❄️",
+                "Any weather is fine 🌈",
+                "Avoid rainy season ☔"
+            ],
+            index=0,
+            key="weather_preference",
+            label_visibility="collapsed")
     
     progress.progress(40)
     
     # ==================== STEP 3: ACCOMMODATION & FOOD ====================
     with st.container(border=True):
-        st.markdown("<h4 style='color:black;'>🏨 <b>Step 3: Accommodation & Dining</b></h4>",unsafe_allow_html=True)
-        
-        st.markdown("<p style='color:black; font-size:16px; font-weight:500; margin:0;'>8. What type of accommodation would you prefer?</p>",unsafe_allow_html=True)
-
-        accommodation_type = st.selectbox(
-            "",
-                [
-                    "Luxury Hotels (5-star) ⭐⭐⭐⭐⭐",
-                    "Boutique Hotels 🏨",
-                    "Budget Hotels/Hostels 🏠",
-                    "Vacation Rentals (Airbnb) 🏡",
-                    "Resorts & Spas 🌴",
-                    "Homestays & B&Bs 🛌"
-                ],
-                index=0,
-                key="accommodation_type")
+        st.markdown("<h4 style='color:black;'>🏨 <b>Step 3: Accommodation & Dining</b></h4>", unsafe_allow_html=True)
         
         st.markdown(
-        "<p style='color:black; font-size:16px; font-weight:500; margin:0;'>9. What type of food would you like to enjoy during your trip?</p>",unsafe_allow_html=True)
-
+            "<p class='question-text'>8. What type of accommodation would you prefer?</p>",
+            unsafe_allow_html=True)
+        accommodation_type = st.selectbox(
+            "",
+            [
+                "Luxury Hotels (5-star) ⭐⭐⭐⭐⭐",
+                "Boutique Hotels 🏨",
+                "Budget Hotels/Hostels 🏠",
+                "Vacation Rentals (Airbnb) 🏡",
+                "Resorts & Spas 🌴",
+                "Homestays & B&Bs 🛌"
+            ],
+            index=0,
+            key="accommodation_type",
+            label_visibility="collapsed")
+        
+        st.markdown(
+            "<p class='question-text'>9. What type of food would you like to enjoy during your trip?</p>",
+            unsafe_allow_html=True)
         food_preferences = st.multiselect(
             "",
-                [
-                    "Local Street Food 🍢",
-                    "Fine Dining 🍽️",
-                    "Vegetarian/Vegan 🥗",
-                    "Seafood Specialties 🦞",
-                    "International Cuisine 🌍",
-                    "Cooking Classes 👨‍🍳",
-                    "Food Tours 🚶‍♀️"
-                ],
-                default=["Local Street Food 🍢", "Fine Dining 🍽️"],
-                key="food_preferences")
-
+            [
+                "Local Street Food 🍢",
+                "Fine Dining 🍽️",
+                "Vegetarian/Vegan 🥗",
+                "Seafood Specialties 🦞",
+                "International Cuisine 🌍",
+                "Cooking Classes 👨‍🍳",
+                "Food Tours 🚶‍♀️"
+            ],
+            default=["Local Street Food 🍢", "Fine Dining 🍽️"],
+            key="food_preferences",
+            label_visibility="collapsed")
     
     progress.progress(60)
     
     # ==================== STEP 4: TRANSPORT & BUDGET ====================
     with st.container(border=True):
-        st.markdown("<h4 style='color:black;'>💰 <b>Step 4: Transport & Budget</b></h4>",unsafe_allow_html=True)
+        st.markdown("<h4 style='color:black;'>💰 <b>Step 4: Transport & Budget</b></h4>", unsafe_allow_html=True)
         
         col5, col6 = st.columns(2)
 
         with col5:
-            st.markdown("<p style='color:black; font-size:16px; font-weight:500; margin:0;'>10. How would you like to travel from departure to destination?</p>",unsafe_allow_html=True)
+            st.markdown(
+                "<p class='question-text'>10. How would you like to travel from departure to destination?</p>",
+                unsafe_allow_html=True)
             travel_mode = st.selectbox(
                 "",
                 [
@@ -390,63 +407,71 @@ def render_ai_planner():
                     "Most Economical Option 💸"
                 ],
                 index=0,
-                key="travel_mode")
+                key="travel_mode",
+                label_visibility="collapsed")
 
             st.markdown(
-            "<p style='color:black; font-size:16px; font-weight:500; margin:0;'>11. Which currency would you like to use for your trip?</p>",unsafe_allow_html=True)
+                "<p class='question-text'>11. Which currency would you like to use for your trip?</p>",
+                unsafe_allow_html=True)
             currency = st.selectbox(
                 "",
-                    [
-                        "INR (Indian Rupees)",
-                        "USD (US Dollars)", 
-                        "EUR (Euros)",
-                        "Local Currency"
-                    ],
-                    index=0,
-                    key="currency")
+                [
+                    "INR (Indian Rupees)",
+                    "USD (US Dollars)", 
+                    "EUR (Euros)",
+                    "Local Currency"
+                ],
+                index=0,
+                key="currency",
+                label_visibility="collapsed")
 
         with col6:
-            st.markdown("<p style='color:black; font-size:16px; font-weight:500; margin:0;'>12. What is your estimated travel budget per person? (INR)</p>",unsafe_allow_html=True)
-    
+            st.markdown(
+                "<p class='question-text'>12. What is your estimated travel budget per person? (INR)</p>",
+                unsafe_allow_html=True)
             budget = st.slider(
                 "",
-                    min_value=5000,
-                    max_value=500000,
-                    value=50000,
-                    step=5000,
-                    help="Select your total budget including flights, accommodation, food, and activities",
-                    key="budget")
+                min_value=5000,
+                max_value=500000,
+                value=50000,
+                step=5000,
+                help="Select your total budget including flights, accommodation, food, and activities",
+                key="budget",
+                label_visibility="collapsed")
            
-            st.markdown(f"<p style='color:black; font-weight:bold;'>Selected Budget: ₹{budget:,}</p>",unsafe_allow_html=True)
+            st.markdown(f"<p style='color:black; font-weight:bold;'>Selected Budget: ₹{budget:,}</p>", unsafe_allow_html=True)
             
-            st.markdown("<p style='color:black; font-size:16px; font-weight:500; margin:0;'>13. How many passengers?</p>",unsafe_allow_html=True)
-
+            st.markdown(
+                "<p class='question-text'>13. How many passengers?</p>",
+                unsafe_allow_html=True)
             passengers = st.number_input(
-                "",min_value=1,
+                "",
+                min_value=1,
                 max_value=20,
                 value=2,
                 step=1,
-                key="passengers")
+                key="passengers",
+                label_visibility="collapsed")
             
             total_budget = budget * passengers
-            st.markdown(f"<p style='color:black; font-weight:bold;'>Total Budget ({passengers} people): ₹{total_budget:,}</p>",unsafe_allow_html=True)
-
+            st.markdown(f"<p style='color:black; font-weight:bold;'>Total Budget ({passengers} people): ₹{total_budget:,}</p>", unsafe_allow_html=True)
     
     progress.progress(80)
     
     # ==================== STEP 5: ADDITIONAL PREFERENCES ====================
     with st.container(border=True):
-        st.markdown(f"<p style='color:black; font-weight:bold;'>Total Budget ({passengers} people): ₹{total_budget:,}</p>",unsafe_allow_html=True)
+        st.markdown(f"<p style='color:black; font-weight:bold;'>Total Budget ({passengers} people): ₹{total_budget:,}</p>", unsafe_allow_html=True)
         
-        st.markdown("<p style='color:black; font-size:16px; font-weight:500; margin:0;'>14. Any additional preferences or specific places/activities you'd like to include?</p>",unsafe_allow_html=True)
-
+        st.markdown(
+            "<p class='question-text'>14. Any additional preferences or specific places/activities you'd like to include?</p>",
+            unsafe_allow_html=True)
         additional_prefs = st.text_area(
             "",
-                placeholder="e.g., Must visit Eiffel Tower, love beach activities, dietary restrictions, special occasions...",
-                height=100,
-                help="The more details you provide, the better your personalized itinerary will be!",
-                key="additional_prefs")
-
+            placeholder="e.g., Must visit Eiffel Tower, love beach activities, dietary restrictions, special occasions...",
+            height=100,
+            help="The more details you provide, the better your personalized itinerary will be!",
+            key="additional_prefs",
+            label_visibility="collapsed")
     
     progress.progress(100)
     
@@ -584,14 +609,12 @@ def display_itinerary(itinerary, destination, days, budget, total_budget, passen
 
     
     # Display itinerary in tabs
-    # Custom CSS to make tab labels black
-    st.markdown("""<style>/* Tab label text color */div[class*="css-"] > button[role="tab"] {color: black !important;}</style>""",unsafe_allow_html=True)
+    st.markdown("""<style>/* Tab label text color */div[class*="css-"] > button[role="tab"] {color: black !important;}</style>""", unsafe_allow_html=True)
 
-    # Tabs
     tab1, tab2, tab3 = st.tabs(["📋 Full Itinerary", "🗓️ Daily Plan", "💾 Save Trip"])
    
     with tab1:
-        st.markdown( f"<h2 style='color:black;'>✨ Your Personalized {destination} Itinerary</h2>",unsafe_allow_html=True)
+        st.markdown(f"<h2 style='color:black;'>✨ Your Personalized {destination} Itinerary</h2>", unsafe_allow_html=True)
         st.divider()
         
         # Display the AI response with BLACK TEXT
@@ -638,19 +661,21 @@ def display_itinerary(itinerary, destination, days, budget, total_budget, passen
         
         with st.form(key="save_form"):
             # Trip Name
-            st.markdown("<p style='color:black; font-size:16px; font-weight:500; margin:0;'>Trip Name</p>",unsafe_allow_html=True)
+            st.markdown("<p class='question-text'>Trip Name</p>", unsafe_allow_html=True)
             trip_name = st.text_input(
                 "",
                 value=f"{destination} Trip - {days} Days ({start_date.strftime('%b %Y')})",
-                key="trip_name")
+                key="trip_name",
+                label_visibility="collapsed")
     
             # Additional Notes
-            st.markdown("<p style='color:black; font-size:16px; font-weight:500; margin:0;'>Additional Notes</p>",unsafe_allow_html=True)
+            st.markdown("<p class='question-text'>Additional Notes</p>", unsafe_allow_html=True)
             trip_notes = st.text_area(
                 "",
                 placeholder="Add personal notes or reminders...",
                 height=80,
-                key="trip_notes")
+                key="trip_notes",
+                label_visibility="collapsed")
             
             save_col1, save_col2 = st.columns([1, 1])
             

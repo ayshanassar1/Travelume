@@ -1,0 +1,264 @@
+{
+  "hotels": [
+    {
+      "id": "h1",
+      "city": "Paris",
+      "name": "H\u00f4tel Regina Louvre",
+      "address": "2 place des Pyramides, 75001 Paris",
+      "price_per_night": 289,
+      "currency": "EUR",
+      "rating": 4.6,
+      "review_count": 1243,
+      "amenities": [
+        "Free WiFi",
+        "Spa",
+        "Restaurant",
+        "Bar",
+        "Air Conditioning",
+        "Room Service"
+      ],
+      "latitude": 48.8647,
+      "longitude": 2.3319,
+      "check_in": "15:00",
+      "check_out": "12:00",
+      "images": [
+        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?w-800"
+      ],
+      "description": "Luxury hotel with stunning views of the Louvre and Eiffel Tower.",
+      "room_types": [
+        {
+          "type": "Standard Room",
+          "price": 289,
+          "max_guests": 2
+        },
+        {
+          "type": "Deluxe Room",
+          "price": 389,
+          "max_guests": 2
+        },
+        {
+          "type": "Suite",
+          "price": 589,
+          "max_guests": 4
+        }
+      ]
+    },
+    {
+      "id": "h2",
+      "city": "Paris",
+      "name": "Le Bristol Paris",
+      "address": "112 rue du Faubourg Saint-Honor\u00e9, 75008 Paris",
+      "price_per_night": 850,
+      "currency": "EUR",
+      "rating": 4.8,
+      "review_count": 892,
+      "amenities": [
+        "Pool",
+        "Spa",
+        "5 Restaurants",
+        "Bar",
+        "Fitness Center",
+        "Butler Service"
+      ],
+      "latitude": 48.8725,
+      "longitude": 2.3174,
+      "check_in": "14:00",
+      "check_out": "12:00",
+      "images": [
+        "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800",
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800"
+      ],
+      "description": "Palace hotel with Michelin-starred dining and luxurious accommodations.",
+      "room_types": [
+        {
+          "type": "Deluxe Room",
+          "price": 850,
+          "max_guests": 2
+        },
+        {
+          "type": "Executive Suite",
+          "price": 1200,
+          "max_guests": 2
+        },
+        {
+          "type": "Presidential Suite",
+          "price": 3500,
+          "max_guests": 4
+        }
+      ]
+    },
+    {
+      "id": "h3",
+      "city": "Dubai",
+      "name": "Burj Al Arab Jumeirah",
+      "address": "Jumeirah Street, Dubai, UAE",
+      "price_per_night": 1500,
+      "currency": "USD",
+      "rating": 4.9,
+      "review_count": 2345,
+      "amenities": [
+        "Private Beach",
+        "Helipad",
+        "Luxury Spa",
+        "9 Restaurants",
+        "Rolls Royce Transfer"
+      ],
+      "latitude": 25.1412,
+      "longitude": 55.1852,
+      "check_in": "15:00",
+      "check_out": "12:00",
+      "images": [
+        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
+        "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800"
+      ],
+      "description": "The world's most luxurious hotel, standing on an artificial island.",
+      "room_types": [
+        {
+          "type": "Deluxe Suite",
+          "price": 1500,
+          "max_guests": 2
+        },
+        {
+          "type": "Panoramic Suite",
+          "price": 2500,
+          "max_guests": 2
+        },
+        {
+          "type": "Royal Suite",
+          "price": 20000,
+          "max_guests": 4
+        }
+      ]
+    },
+    {
+      "id": "h4",
+      "city": "Dubai",
+      "name": "Atlantis The Palm",
+      "address": "Crescent Road, The Palm Jumeirah, Dubai",
+      "price_per_night": 450,
+      "currency": "USD",
+      "rating": 4.7,
+      "review_count": 5678,
+      "amenities": [
+        "Aquaventure Waterpark",
+        "Aquarium",
+        "Private Beach",
+        "23 Restaurants",
+        "Dolphin Bay"
+      ],
+      "latitude": 25.1309,
+      "longitude": 55.1173,
+      "check_in": "15:00",
+      "check_out": "12:00",
+      "images": [
+        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800",
+        "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800"
+      ],
+      "description": "Iconic resort with underwater suites and world-class entertainment.",
+      "room_types": [
+        {
+          "type": "Imperial Club Room",
+          "price": 450,
+          "max_guests": 3
+        },
+        {
+          "type": "Underwater Suite",
+          "price": 5000,
+          "max_guests": 2
+        },
+        {
+          "type": "Palm Beach Suite",
+          "price": 1200,
+          "max_guests": 4
+        }
+      ]
+    },
+    {
+      "id": "h5",
+      "city": "Bali",
+      "name": "Four Seasons Resort Bali at Sayan",
+      "address": "Sayan, Ubud, Bali 80571, Indonesia",
+      "price_per_night": 600,
+      "currency": "USD",
+      "rating": 4.8,
+      "review_count": 987,
+      "amenities": [
+        "Infinity Pool",
+        "Spa",
+        "Yoga Pavilion",
+        "3 Restaurants",
+        "Rice Terrace Views"
+      ],
+      "latitude": -8.5069,
+      "longitude": 115.2605,
+      "check_in": "14:00",
+      "check_out": "12:00",
+      "images": [
+        "https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=800",
+        "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800"
+      ],
+      "description": "Luxury resort nestled in the jungle with breathtaking river valley views.",
+      "room_types": [
+        {
+          "type": "Villa Suite",
+          "price": 600,
+          "max_guests": 2
+        },
+        {
+          "type": "Royal Villa",
+          "price": 1200,
+          "max_guests": 4
+        },
+        {
+          "type": "Presidential Villa",
+          "price": 2500,
+          "max_guests": 6
+        }
+      ]
+    },
+    {
+      "id": "h6",
+      "city": "Thailand",
+      "name": "Banyan Tree Phuket",
+      "address": "33 Moo 4, Srisoonthorn Road, Phuket 83110, Thailand",
+      "price_per_night": 350,
+      "currency": "USD",
+      "rating": 4.7,
+      "review_count": 1456,
+      "amenities": [
+        "Private Pool Villas",
+        "Spa",
+        "Golf Course",
+        "4 Restaurants",
+        "Beach Access"
+      ],
+      "latitude": 7.95,
+      "longitude": 98.3333,
+      "check_in": "14:00",
+      "check_out": "12:00",
+      "images": [
+        "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800",
+        "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800"
+      ],
+      "description": "All-pool villa resort with panoramic views of the Andaman Sea.",
+      "room_types": [
+        {
+          "type": "Pool Villa",
+          "price": 350,
+          "max_guests": 2
+        },
+        {
+          "type": "Double Pool Villa",
+          "price": 550,
+          "max_guests": 4
+        },
+        {
+          "type": "Ocean View Pool Villa",
+          "price": 650,
+          "max_guests": 2
+        }
+      ]
+    }
+  ]
+}

@@ -51,4 +51,36 @@ tmp/
 # Database files
 *.db
 *.sqlite
-users.json  # Remove this if you want to share sample users
+users.json
+
+# ---- Sensitive Data ----
+data/users.json
+data/trips.json
+data/trips/
+data/journals.json
+data/journals/
+data/chat_sessions
+data/audio/
+data/hotel_bookings.json
+data/agency_reviews.json
+data/verified_agencies.json
+
+# ---- Test & Debug Scripts ----
+test_*.py
+verify_*.py
+debug_*.py
+fix_*.py
+check_models.py
+console_ai_test.py
+run_model_tests.py
+simple_ai_test.py
+single_pro_test.py
+targeted_ai_test.py
+discover_models.py
+test_flash_2.py
+
+# ---- Output / Temp Files ----
+*.txt
+test.png
+test_image.jpg
+model_discovery_output.txt

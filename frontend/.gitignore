@@ -1,0 +1,101 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# Sensitive user data
+data/users.json
+data/trips.json
+data/trips/
+data/journals.json
+data/journals/
+data/chat_sessions
+data/audio/
+data/hotel_bookings.json
+data/agency_reviews.json
+data/verified_agencies.json
+
+# Test & debug scripts
+test_*.py
+verify_*.py
+debug_*.py
+fix_*.py
+run_model_tests.py
+single_pro_test.py
+targeted_ai_test.py
+simple_ai_test.py
+console_ai_test.py
+check_models.py
+discover_models.py
+
+# Output files
+*.txt
+test.png
+test_image.jpg
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Node
+node_modules/
+# ---- Sensitive Data ----
+data/users.json
+data/trips.json
+data/trips/
+data/journals.json
+data/journals/
+data/chat_sessions
+data/audio/
+data/hotel_bookings.json
+data/agency_reviews.json
+data/verified_agencies.json
+users.json
+
+# ---- Test & Debug Scripts ----
+test_*.py
+verify_*.py
+debug_*.py
+fix_*.py
+check_models.py
+console_ai_test.py
+run_model_tests.py
+simple_ai_test.py
+single_pro_test.py
+targeted_ai_test.py
+discover_models.py
+test_flash_2.py
+
+# ---- Output / Temp Files ----
+*.txt
+test.png
+test_image.jpg
+model_discovery_output.txt
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.env
+
+# ---- Node ----
+node_modules/
