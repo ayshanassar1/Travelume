@@ -1,4 +1,4 @@
-# ✈️ Travelume
+# ✈️ Travelume!
 
 > An AI-powered travel planning web application that helps users plan trips, manage travel journals, book accommodations, and interact with a smart travel coach chatbot.
 
